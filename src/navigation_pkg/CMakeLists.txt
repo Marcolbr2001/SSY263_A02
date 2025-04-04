@@ -32,7 +32,7 @@ ament_target_dependencies(
 ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 
 add_executable(navi_node src/navi_node.cpp)
-ament_target_dependencies(navi_node rclcpp navi_interfaces )
+ament_target_dependencies(navi_node rclcpp navi_interfaces)
 
 target_link_libraries(navi_node ${PROJECT_NAME}) 
 
