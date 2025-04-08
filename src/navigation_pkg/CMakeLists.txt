@@ -14,6 +14,7 @@ add_library(
  ${PROJECT_NAME}
  SHARED
  src/NaviPublisher.cpp
+ src/NaviSubscriber.cpp
 ) 
 
 target_include_directories(
@@ -36,6 +37,11 @@ ament_target_dependencies(navi_node rclcpp navi_interfaces)
 
 target_link_libraries(navi_node ${PROJECT_NAME}) 
 
+add_executable(sub_navi_node src/sub_navi_node.cpp)
+ament_target_dependencies(sub_navi_node rclcpp navi_interfaces)
+
+target_link_libraries(sub_navi_node ${PROJECT_NAME}) 
+
 install(DIRECTORY include/
  DESTINATION include)
 
@@ -54,7 +60,7 @@ ament_export_include_directories(include)
 ament_export_libraries(${PROJECT_NAME})
 ament_export_dependencies(ament_cmake rclcpp navi_interfaces)
 
-install(TARGETS navi_node
+install(TARGETS navi_node sub_navi_node
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
